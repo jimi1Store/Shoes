@@ -136,6 +136,8 @@
     meta.appendChild(sep);
     meta.appendChild(el("span", "code", p.code));
     info.appendChild(meta);
+    var sf = p.sizeFrom || S.sizeFrom, st = p.sizeTo || S.sizeTo;
+    if (sf && st) info.appendChild(el("p", "sizes", "المقاسات المتوفرة: " + sf + " – " + st));
     info.appendChild(el("p", "price", money(p.price)));
     var a = el("a", "btn btn-orange", "اطلب عبر واتساب");
     a.href = waUrl("السلام عليكم، أريد الطلب: " + p.name + " (الكود " + p.code + ") - السعر " + money(p.price));
