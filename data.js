@@ -7,6 +7,8 @@ window.STORE = {
   mapLink: "https://maps.app.goo.gl/gGeRPXxvwex38vxM9",
   mapQuery: "JF9C+5CW أم درمان السودان",
   currency: "جنيه",
+  sizeFrom: 41,
+  sizeTo: 45,
   /* للإخفاء بدون حذف: غيّر active إلى false */
   products: [
     { code: "J-01", name: "حذاء جلد كاجوال – بيج", type: "leather", color: "beige", price: 190000, image: "shoe-beige-wood.jpg", alt: "حذاء جلد بيج على منصة خشبية", w: 1080, h: 918, active: true },
