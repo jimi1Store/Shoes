@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة التحكم | Jimi Store</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{--espresso:#2a1710;--chestnut:#6b3f26;--orange:#f26a21;--orange-dark:#d9560f;--sand:#eadbc5;--linen:#f6eee2;--red:#b3261e;--green:#1e7a3c}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:"IBM Plex Sans Arabic",Tahoma,sans-serif;background:var(--linen);color:var(--espresso);line-height:1.6;padding-bottom:6rem}
+header{background:var(--espresso);color:#fff;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem;position:sticky;top:0;z-index:5}
+header h1{font-family:Lalezar,Tahoma,sans-serif;font-weight:400;font-size:1.4rem;margin:0}
+header a{color:#fff;font-size:.9rem}
+main{max-width:900px;margin:0 auto;padding:1rem}
+button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:.6rem 1rem;font-weight:600}
+.btn-or{background:var(--orange);color:#fff}.btn-or:hover{background:var(--orange-dark)}
+.btn-dk{background:var(--espresso);color:#fff}
+.btn-ln{background:#fff;color:var(--espresso);border:1.5px solid var(--sand)}
+.btn-rd{background:#fff;color:var(--red);border:1.5px solid #e8b9b5}
+button:disabled{opacity:.5;cursor:not-allowed}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.toolbar input[type=search]{flex:1;min-width:150px;padding:.6rem .8rem;border:1.5px solid var(--sand);border-radius:10px;font:inherit;background:#fff}
+.card{background:#fff;border:1.5px solid var(--sand);border-radius:14px;padding:.8rem;margin-bottom:.8rem;display:grid;grid-template-columns:96px 1fr;gap:.8rem}
+.card.off{opacity:.6}
+.card.new{border-color:var(--orange)}
+.thumb{position:relative}
+.thumb img{width:96px;height:120px;object-fit:cover;border-radius:10px;background:var(--sand)}
+.thumb button{position:absolute;bottom:4px;inset-inline:4px;padding:.2rem;font-size:.75rem;background:rgba(42,23,16,.85);color:#fff;border-radius:8px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.fields .full{grid-column:1/-1}
+label{display:block;font-size:.8rem;color:var(--chestnut);font-weight:600}
+input[type=text],input[type=number],select,input[type=password]{width:100%;padding:.5rem .6rem;border:1.5px solid var(--sand);border-radius:8px;font:inherit;background:#fff}
+input:focus,select:focus{outline:2px solid var(--orange);border-color:var(--orange)}
+.row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.code{background:var(--sand);padding:.1rem .6rem;border-radius:99px;font-size:.8rem;font-weight:600}
+.chk{display:flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:500;color:var(--espresso)}
+.chk input{width:1.1rem;height:1.1rem;accent-color:var(--orange)}
+.bar{position:fixed;bottom:0;inset-inline:0;background:#fff;border-top:1.5px solid var(--sand);padding:.7rem 1rem;display:flex;gap:.5rem;justify-content:center;align-items:center;z-index:6;flex-wrap:wrap}
+.bar .info{font-size:.9rem;color:var(--chestnut)}
+dialog{border:0;border-radius:16px;padding:1.2rem;max-width:480px;width:calc(100% - 2rem);background:var(--linen);color:var(--espresso)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{margin:.2rem 0 .6rem;font-family:Lalezar,Tahoma,sans-serif;font-weight:400}
+dialog .f{margin-bottom:.7rem}
+dialog small{color:var(--chestnut);display:block;margin-top:.3rem}
+.msg{margin:.6rem 0;padding:.6rem .8rem;border-radius:10px;font-size:.9rem;white-space:pre-line}
+.msg.ok{background:#e3f4e8;color:var(--green)}.msg.err{background:#fbe6e4;color:var(--red)}.msg.inf{background:var(--sand)}
+.sizes-bar{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;background:#fff;border:1.5px solid var(--sand);border-radius:12px;padding:.6rem .8rem;margin-bottom:1rem;font-weight:600}
+.sizes-bar input,.pair input{width:4.5rem;padding:.4rem .5rem;border:1.5px solid var(--sand);border-radius:8px;font:inherit;text-align:center}
+.fields .szfull{grid-column:1/-1}
+.sizes-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.25rem}
+.szchip{padding:.35rem .7rem;min-width:2.7rem;border:1.5px solid var(--sand);background:#fff;color:var(--espresso);border-radius:99px;font-weight:600}
+.szchip.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.szreset{padding:.35rem .8rem;font-size:.85rem}
+.empty{text-align:center;color:var(--chestnut);padding:2rem}
+@media(min-width:640px){.card{grid-template-columns:120px 1fr}.thumb img{width:120px;height:150px}.fields{grid-template-columns:2fr 1fr 1fr 1fr}.fields .full{grid-column:auto}.fields .name{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<header>
+  <h1>لوحة تحكم Jimi Store</h1>
+  <a href="products.html" target="_blank" rel="noopener">عرض الموقع</a>
+</header>
+
+<main>
+  <div id="status"></div>
+  <div class="toolbar">
+    <button class="btn-or" id="add-btn" type="button">+ إضافة منتج</button>
+    <input type="search" id="q" placeholder="ابحث بالاسم أو الكود">
+    <button class="btn-ln" id="set-btn" type="button">إعدادات النشر</button>
+  </div>
+  <div class="sizes-bar">
+    <span>المقاسات المتوفرة في المتجر: من</span>
+    <input type="number" id="s-from" min="1" max="60" inputmode="numeric">
+    <span>إلى</span>
+    <input type="number" id="s-to" min="1" max="60" inputmode="numeric">
+  </div>
+  <div id="list"></div>
+</main>
+
+<div class="bar">
+  <span class="info" id="dirty-info">لا توجد تعديلات</span>
+  <button class="btn-or" id="pub-btn" type="button" disabled>نشر التعديلات على الموقع</button>
+  <button class="btn-ln" id="dl-btn" type="button" disabled>تنزيل الملفات</button>
+</div>
+
+<!-- إضافة منتج -->
+<dialog id="add-dlg">
+  <form method="dialog" id="add-form">
+    <h2>منتج جديد</h2>
+    <div class="f"><label for="a-name">اسم المنتج</label><input id="a-name" type="text" required placeholder="مثال: حذاء جلد برباط – بني"></div>
+    <div class="f"><label for="a-price">السعر</label><input id="a-price" type="number" min="0" step="1000" required inputmode="numeric"></div>
+    <div class="f"><label for="a-type">النوع</label><select id="a-type"></select></div>
+    <div class="f"><label for="a-color">اللون</label><select id="a-color"></select></div>
+    <div class="f"><label for="a-img">الصورة</label><input id="a-img" type="file" accept="image/*" required><small>يتم تصغير الصورة تلقائيا قبل الرفع.</small></div>
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn-ln" type="button" id="a-cancel">إلغاء</button>
+      <button class="btn-or" type="submit">إضافة</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- إعدادات GitHub -->
+<dialog id="set-dlg">
+  <form method="dialog" id="set-form">
+    <h2>إعدادات النشر (مرة واحدة)</h2>
+    <p style="font-size:.9rem;margin:0 0 .8rem">لو أدخلت هذه البيانات، زر «نشر التعديلات» يرفع التغييرات مباشرة إلى GitHub ويتحدث الموقع خلال دقيقة تقريبا. تُحفظ في هذا المتصفح فقط.</p>
+    <div class="f"><label for="g-owner">اسم حساب GitHub</label><input id="g-owner" type="text" dir="ltr" autocomplete="off"></div>
+    <div class="f"><label for="g-repo">اسم المستودع (Repository)</label><input id="g-repo" type="text" dir="ltr" autocomplete="off"></div>
+    <div class="f"><label for="g-branch">الفرع (Branch)</label><input id="g-branch" type="text" dir="ltr" value="main" autocomplete="off"></div>
+    <div class="f"><label for="g-token">رمز الوصول (Token)</label><input id="g-token" type="password" dir="ltr" autocomplete="off">
+      <small>GitHub ← Settings ← Developer settings ← Fine-grained tokens ← Generate. اختر هذا المستودع فقط، وصلاحية Contents = Read and write. لا تشارك الرمز مع أحد.</small></div>
+    <div class="row" style="justify-content:space-between">
+      <button class="btn-rd" type="button" id="g-clear">مسح الإعدادات</button>
+      <span class="row"><button class="btn-ln" type="button" id="g-cancel">إلغاء</button><button class="btn-or" type="submit">حفظ</button></span>
+    </div>
+  </form>
+</dialog>
+
+<script>
+(function () {
+  var TYPES = { leather: "جلد", sport: "رياضي" };
+  var COLORS = { beige: "بيج", tan: "جملي", brown: "بني", black: "أسود", gray: "رمادي", white: "أبيض", other: "أخرى" };
+  var KEYS = ["code", "name", "type", "color", "price", "image", "alt", "w", "h", "sizes", "active"];
+  var CFG = "jimi_admin_gh";
+
+  var store = null;            // نسخة البيانات الحالية
+  var origImages = [];         // صور المنتجات عند التحميل
+  var pending = {};            // اسم الملف -> { blob, url }
+  var dirty = false;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function el(tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text !== undefined) x.textContent = text; return x; }
+  function say(text, kind) {
+    var s = $("status"); s.innerHTML = "";
+    if (!text) return;
+    var d = el("div", "msg " + (kind || "inf"), text); s.appendChild(d);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function getCfg() { try { return JSON.parse(localStorage.getItem(CFG)) || null; } catch (e) { return null; } }
+  function hasCfg() { var c = getCfg(); return !!(c && c.owner && c.repo && c.token); }
+
+  function setDirty(v) {
+    dirty = v;
+    $("dirty-info").textContent = v ? "توجد تعديلات لم تُنشر" : "لا توجد تعديلات";
+    $("pub-btn").disabled = !v;
+    $("dl-btn").disabled = !v;
+  }
+
+  /* ---------- قراءة data.js ---------- */
+  function parseData(text) {
+    var w = {};
+    new Function("window", text)(w);
+    if (!w.STORE || !Array.isArray(w.STORE.products)) throw new Error("ملف data.js غير صالح");
+    return w.STORE;
+  }
+  function b64decode(b64) {
+    var bin = atob(b64.replace(/\n/g, "")), arr = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(arr);
+  }
+  function b64encodeText(s) {
+    var bytes = new TextEncoder().encode(s), bin = "";
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+
+  /* ---------- GitHub API ---------- */
+  function gh(method, path, body) {
+    var c = getCfg();
+    var url = "https://api.github.com/repos/" + encodeURIComponent(c.owner) + "/" + encodeURIComponent(c.repo) + "/contents/" + path;
+    if (method === "GET") url += "?ref=" + encodeURIComponent(c.branch || "main") + "&t=" + Date.now();
+    return fetch(url, {
+      method: method,
+      headers: { "Authorization": "Bearer " + c.token, "Accept": "application/vnd.github+json", "Content-Type": "application/json" },
+      body: body ? JSON.stringify(body) : undefined
+    }).then(function (r) {
+      if (r.status === 404 && method === "GET") return null;
+      if (!r.ok) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          var hint = r.status === 401 ? "الرمز (Token) غير صحيح أو منتهي." : r.status === 403 ? "الرمز لا يملك صلاحية الكتابة على هذا المستودع." : r.status === 404 ? "المستودع غير موجود، راجع الاسم." : (j.message || "خطأ " + r.status);
+          throw new Error(hint);
+        });
+      }
+      return r.json();
+    });
+  }
+  function blobToB64(blob) {
+    return new Promise(function (res, rej) {
+      var fr = new FileReader();
+      fr.onload = function () { res(String(fr.result).split(",")[1]); };
+      fr.onerror = rej;
+      fr.readAsDataURL(blob);
+    });
+  }
+
+  /* ---------- تحميل البيانات ---------- */
+  function load() {
+    var p;
+    if (hasCfg()) {
+      p = gh("GET", "data.js").then(function (j) {
+        if (!j) throw new Error("لم أجد data.js في المستودع");
+        return b64decode(j.content);
+      });
+    } else {
+      p = fetch("data.js?t=" + Date.now(), { cache: "no-store" }).then(function (r) {
+        if (!r.ok) throw new Error("تعذر تحميل data.js");
+        return r.text();
+      });
+    }
+    p.then(function (text) {
+      store = parseData(text);
+      origImages = store.products.map(function (x) { return x.image; });
+      $("s-from").value = store.sizeFrom || ""; $("s-to").value = store.sizeTo || "";
+      render();
+    }).catch(function (e) {
+      say("تعذر تحميل البيانات: " + e.message, "err");
+    });
+  }
+
+  /* ---------- العرض ---------- */
+  function imgSrc(name) { return pending[name] ? pending[name].url : name; }
+
+  function sel(map, value, onchange) {
+    var s = el("select");
+    Object.keys(map).forEach(function (k) { var o = el("option", "", map[k]); o.value = k; if (k === value) o.selected = true; s.appendChild(o); });
+    s.addEventListener("change", function () { onchange(s.value); });
+    return s;
+  }
+  function field(labelText, input, cls) {
+    var d = el("div", cls || ""); d.appendChild(el("label", "", labelText)); d.appendChild(input); return d;
+  }
+
+  function render() {
+    var list = $("list"); list.innerHTML = "";
+    var q = $("q").value.trim().toLowerCase();
+    var shown = 0;
+    store.products.forEach(function (p, i) {
+      if (q && (p.name + " " + p.code).toLowerCase().indexOf(q) === -1) return;
+      shown++;
+      var card = el("div", "card" + (p.active === false ? " off" : "") + (pending[p.image] ? " new" : ""));
+
+      var th = el("div", "thumb");
+      var im = el("img"); im.src = imgSrc(p.image); im.alt = p.alt || p.name; th.appendChild(im);
+      var chg = el("button", "", "تغيير الصورة"); chg.type = "button";
+      chg.addEventListener("click", function () { pickImage(function (f) { replaceImage(i, f); }); });
+      th.appendChild(chg);
+      card.appendChild(th);
+
+      var fs = el("div", "fields");
+      var name = el("input"); name.type = "text"; name.value = p.name;
+      name.addEventListener("input", function () { p.name = name.value; if (!p.altCustom) p.alt = name.value; setDirty(true); });
+      fs.appendChild(field("الاسم", name, "name"));
+
+      var price = el("input"); price.type = "number"; price.min = "0"; price.step = "1000"; price.value = p.price; price.inputMode = "numeric";
+      price.addEventListener("input", function () { p.price = Number(price.value) || 0; setDirty(true); });
+      fs.appendChild(field("السعر (" + (store.currency || "") + ")", price));
+
+      fs.appendChild(field("النوع", sel(TYPES, p.type, function (v) { p.type = v; setDirty(true); })));
+      fs.appendChild(field("اللون", sel(COLORS, p.color, function (v) { p.color = v; setDirty(true); })));
+
+      var szBox = el("div", "sizes-chips");
+      var eff = function () {
+        if (Array.isArray(p.sizes)) return p.sizes;
+        var r = [];
+        if (store.sizeFrom && store.sizeTo) for (var q = store.sizeFrom; q <= store.sizeTo; q++) r.push(q);
+        return r;
+      };
+      var cur = eff(), lo = Math.min.apply(null, [38].concat(cur)), hi = Math.max.apply(null, [47].concat(cur));
+      for (var n = lo; n <= hi; n++) (function (n) {
+        var b = el("button", "szchip" + (cur.indexOf(n) > -1 ? " on" : ""), String(n)); b.type = "button";
+        b.addEventListener("click", function () {
+          var arr = eff().slice(), k = arr.indexOf(n);
+          if (k > -1) arr.splice(k, 1); else arr.push(n);
+          arr.sort(function (x, y) { return x - y; });
+          p.sizes = arr; b.classList.toggle("on"); setDirty(true);
+        });
+        szBox.appendChild(b);
+      })(n);
+      if (Array.isArray(p.sizes)) {
+        var rs = el("button", "btn-ln szreset", "الافتراضي"); rs.type = "button";
+        rs.addEventListener("click", function () { delete p.sizes; setDirty(true); render(); });
+        szBox.appendChild(rs);
+      }
+      fs.appendChild(field("المقاسات المتوفرة لهذا الحذاء (اضغطي لتفعيل/إلغاء المقاس)", szBox, "szfull"));
+
+      var act = el("div", "full row");
+      act.appendChild(el("span", "code", p.code));
+      var lab = el("label", "chk"); var cb = el("input"); cb.type = "checkbox"; cb.checked = p.active !== false;
+      cb.addEventListener("change", function () { p.active = cb.checked; setDirty(true); card.classList.toggle("off", !cb.checked); });
+      lab.appendChild(cb); lab.appendChild(document.createTextNode("ظاهر في الموقع"));
+      act.appendChild(lab);
+      var del = el("button", "btn-rd", "حذف"); del.type = "button";
+      del.addEventListener("click", function () {
+        if (!confirm("حذف «" + p.name + "» نهائيا مع صورته؟")) return;
+        store.products.splice(i, 1); setDirty(true); render();
+      });
+      act.appendChild(del);
+      fs.appendChild(act);
+
+      card.appendChild(fs);
+      list.appendChild(card);
+    });
+    if (!shown) list.appendChild(el("p", "empty", "لا توجد منتجات مطابقة."));
+  }
+
+  /* ---------- الصور ---------- */
+  function pickImage(cb) {
+    var inp = document.createElement("input"); inp.type = "file"; inp.accept = "image/*";
+    inp.addEventListener("change", function () { if (inp.files[0]) cb(inp.files[0]); });
+    inp.click();
+  }
+  function shrink(file) {
+    return new Promise(function (res, rej) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var max = 1200, s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+        var w = Math.round(img.naturalWidth * s), h = Math.round(img.naturalHeight * s);
+        var c = document.createElement("canvas"); c.width = w; c.height = h;
+        var ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(url);
+        c.toBlob(function (b) { b ? res({ blob: b, w: w, h: h }) : rej(new Error("فشل تصغير الصورة")); }, "image/jpeg", 0.85);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); rej(new Error("ملف الصورة غير صالح")); };
+      img.src = url;
+    });
+  }
+  function newImageName(code) { return "shoe-" + code.toLowerCase() + "-" + Date.now().toString(36) + ".jpg"; }
+
+  function replaceImage(i, file) {
+    var p = store.products[i];
+    shrink(file).then(function (r) {
+      if (pending[p.image]) { URL.revokeObjectURL(pending[p.image].url); delete pending[p.image]; }
+      var n = newImageName(p.code);
+      pending[n] = { blob: r.blob, url: URL.createObjectURL(r.blob) };
+      p.image = n; p.w = r.w; p.h = r.h;
+      setDirty(true); render();
+    }).catch(function (e) { say(e.message, "err"); });
+  }
+
+  /* ---------- إضافة منتج ---------- */
+  function nextCode() {
+    var m = 0;
+    store.products.forEach(function (p) { var n = parseInt(String(p.code).replace(/\D/g, ""), 10); if (n > m) m = n; });
+    return "J-" + String(m + 1).padStart(2, "0");
+  }
+  function fill(s, map) { s.innerHTML = ""; Object.keys(map).forEach(function (k) { var o = el("option", "", map[k]); o.value = k; s.appendChild(o); }); }
+  fill($("a-type"), TYPES); fill($("a-color"), COLORS);
+
+  $("add-btn").addEventListener("click", function () { if (!store) return; $("add-form").reset(); $("add-dlg").showModal(); });
+  $("a-cancel").addEventListener("click", function () { $("add-dlg").close(); });
+  $("add-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = $("a-img").files[0]; if (!f) return;
+    var code = nextCode(), name = $("a-name").value.trim();
+    shrink(f).then(function (r) {
+      var n = newImageName(code);
+      pending[n] = { blob: r.blob, url: URL.createObjectURL(r.blob) };
+      store.products.unshift({ code: code, name: name, type: $("a-type").value, color: $("a-color").value, price: Number($("a-price").value) || 0, image: n, alt: name, w: r.w, h: r.h, active: true });
+      $("add-dlg").close(); setDirty(true); render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }).catch(function (err) { say(err.message, "err"); });
+  });
+
+  ["from", "to"].forEach(function (k) {
+    $("s-" + k).addEventListener("input", function () {
+      if (!store) return;
+      var key = k === "from" ? "sizeFrom" : "sizeTo", v = $("s-" + k).value;
+      if (v) store[key] = Number(v); else delete store[key];
+      setDirty(true); render();
+    });
+  });
+  $("q").addEventListener("input", function () { if (store) render(); });
+
+  /* ---------- توليد data.js ---------- */
+  function js(v) { return JSON.stringify(v); }
+  function buildDataJs() {
+    var skip = { products: 1 };
+    var out = "/* ===== بيانات المتجر - عدّل هذا الملف لتغيير المنتجات والأسعار والإعدادات ===== */\nwindow.STORE = {\n";
+    Object.keys(store).forEach(function (k) { if (!skip[k]) out += "  " + k + ": " + js(store[k]) + ",\n"; });
+    out += "  /* للإخفاء بدون حذف: غيّر active إلى false */\n  products: [\n";
+    store.products.forEach(function (p) {
+      var parts = [];
+      KEYS.forEach(function (k) { if (p[k] !== undefined) parts.push(k + ": " + js(p[k])); });
+      out += "    { " + parts.join(", ") + " },\n";
+    });
+    out += "  ]\n};\n";
+    return out;
+  }
+  function stale() {
+    var used = {}; store.products.forEach(function (p) { used[p.image] = 1; });
+    return origImages.filter(function (n, i) { return !used[n] && origImages.indexOf(n) === i; });
+  }
+  function toUpload() {
+    var used = {}; store.products.forEach(function (p) { used[p.image] = 1; });
+    return Object.keys(pending).filter(function (n) { return used[n]; });
+  }
+
+  /* ---------- النشر ---------- */
+  $("pub-btn").addEventListener("click", function () {
+    if (!hasCfg()) { say("لنشر التعديلات مباشرة أدخل إعدادات GitHub أولا، أو استخدم زر «تنزيل الملفات».", "inf"); openSettings(); return; }
+    if (!confirm("نشر التعديلات على الموقع الآن؟")) return;
+    var btn = $("pub-btn"); btn.disabled = true; $("dl-btn").disabled = true;
+    var ups = toUpload(), dels = stale(), total = ups.length + 1 + dels.length, done = 0;
+    function prog(t) { say("جاري النشر (" + done + "/" + total + ")... " + t, "inf"); }
+    var chain = Promise.resolve();
+
+    ups.forEach(function (n) {
+      chain = chain.then(function () {
+        prog("رفع صورة");
+        return blobToB64(pending[n].blob).then(function (b64) {
+          return gh("GET", n).then(function (ex) {
+            var body = { message: "إضافة صورة " + n, content: b64, branch: getCfg().branch || "main" };
+            if (ex && ex.sha) body.sha = ex.sha;
+            return gh("PUT", n, body);
+          });
+        }).then(function () { done++; });
+      });
+    });
+
+    chain = chain.then(function () {
+      prog("تحديث data.js");
+      return gh("GET", "data.js").then(function (ex) {
+        var body = { message: "تحديث المنتجات والأسعار من لوحة التحكم", content: b64encodeText(buildDataJs()), branch: getCfg().branch || "main" };
+        if (ex && ex.sha) body.sha = ex.sha;
+        return gh("PUT", "data.js", body);
+      }).then(function () { done++; });
+    });
+
+    dels.forEach(function (n) {
+      chain = chain.then(function () {
+        prog("حذف صورة قديمة");
+        return gh("GET", n).then(function (ex) {
+          if (!ex || !ex.sha) return;
+          return gh("DELETE", n, { message: "حذف صورة " + n, sha: ex.sha, branch: getCfg().branch || "main" });
+        }).then(function () { done++; });
+      });
+    });
+
+    chain.then(function () {
+      origImages = store.products.map(function (p) { return p.image; });
+      Object.keys(pending).forEach(function (n) { if (origImages.indexOf(n) === -1) { URL.revokeObjectURL(pending[n].url); delete pending[n]; } });
+      setDirty(false); render();
+      say("تم النشر ✔\nالتغييرات تظهر في الموقع خلال دقيقة إلى دقيقتين (حدّث الصفحة).", "ok");
+    }).catch(function (e) {
+      setDirty(true);
+      say("توقف النشر: " + e.message + "\nيمكنك المحاولة مرة أخرى؛ ما تم رفعه سابقا لا يتكرر ضرره.", "err");
+    });
+  });
+
+  /* ---------- تنزيل الملفات (بدون GitHub) ---------- */
+  function download(blob, name) {
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  }
+  function loadZip() {
+    return new Promise(function (res, rej) {
+      if (window.JSZip) return res(window.JSZip);
+      var s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+      s.onload = function () { res(window.JSZip); };
+      s.onerror = function () { rej(new Error("تعذر تحميل أداة الضغط، تأكد من الإنترنت")); };
+      document.head.appendChild(s);
+    });
+  }
+  $("dl-btn").addEventListener("click", function () {
+    var ups = toUpload(), dels = stale();
+    var dataBlob = new Blob([buildDataJs()], { type: "text/javascript;charset=utf-8" });
+    if (!ups.length) {
+      download(dataBlob, "data.js");
+    } else {
+      loadZip().then(function (JSZip) {
+        var z = new JSZip(); z.file("data.js", buildDataJs());
+        ups.forEach(function (n) { z.file(n, pending[n].blob); });
+        return z.generateAsync({ type: "blob" });
+      }).then(function (b) { download(b, "jimi-update.zip"); }).catch(function (e) { say(e.message, "err"); return; });
+    }
+    var m = "تم التنزيل. ارفع " + (ups.length ? "الملفات (data.js + الصور الجديدة بعد فك الضغط)" : "ملف data.js") + " إلى المستودع في GitHub واستبدل القديم.";
+    if (dels.length) m += "\nيمكنك أيضا حذف الصور القديمة غير المستخدمة:\n" + dels.join("\n");
+    say(m, "ok");
+  });
+
+  /* ---------- إعدادات GitHub ---------- */
+  function openSettings() {
+    var c = getCfg() || {};
+    $("g-owner").value = c.owner || ""; $("g-repo").value = c.repo || ""; $("g-branch").value = c.branch || "main"; $("g-token").value = c.token || "";
+    $("set-dlg").showModal();
+  }
+  $("set-btn").addEventListener("click", openSettings);
+  $("g-cancel").addEventListener("click", function () { $("set-dlg").close(); });
+  $("g-clear").addEventListener("click", function () { localStorage.removeItem(CFG); $("set-dlg").close(); say("تم مسح إعدادات النشر من هذا المتصفح.", "inf"); });
+  $("set-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    localStorage.setItem(CFG, JSON.stringify({
+      owner: $("g-owner").value.trim(), repo: $("g-repo").value.trim(),
+      branch: $("g-branch").value.trim() || "main", token: $("g-token").value.trim()
+    }));
+    $("set-dlg").close();
+    say("تم الحفظ. جاري التحقق من الاتصال...", "inf");
+    gh("GET", "data.js").then(function (j) {
+      if (!j) throw new Error("لم أجد data.js في المستودع، راجع اسم المستودع والفرع");
+      say("الاتصال ناجح ✔ يمكنك الآن النشر مباشرة.", "ok");
+    }).catch(function (err) { say("فشل الاتصال: " + err.message, "err"); });
+  });
+
+  window.addEventListener("beforeunload", function (e) { if (dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+  load();
+})();
+</script>
+</body>
+</html>
