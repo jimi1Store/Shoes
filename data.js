@@ -11,7 +11,7 @@ window.STORE = {
   sizeTo: 45,
   /* للإخفاء بدون حذف: غيّر active إلى false */
   products: [
-    { code: "J-01", name: "حذاء جلد كاجوال – بيج", type: "leather", color: "beige", price: 180000, image: "shoe-beige-wood.jpg", alt: "حذاء جلد بيج على منصة خشبية", w: 1080, h: 918, active: true },
+    { code: "J-01", name: "حذاء جلد كاجوال – بيج", type: "leather", color: "beige", price: 1880000, image: "shoe-beige-wood.jpg", alt: "حذاء جلد بيج على منصة خشبية", w: 1080, h: 918, active: true },
     { code: "J-02", name: "حذاء جلد كاجوال – بني غامق", type: "leather", color: "brown", price: 190000, image: "shoe-brown-poster.jpg", alt: "حذاء جلد بني غامق بنعل أسود", w: 843, h: 1117, active: true },
     { code: "J-03", name: "حذاء جلد كاجوال – جملي", type: "leather", color: "tan", price: 190000, image: "shoe-tan-marble.jpg", alt: "حذاء جلد جملي بنعل بيج", w: 1080, h: 778, active: true },
     { code: "J-04", name: "حذاء جلد كاجوال – بني", type: "leather", color: "brown", price: 190000, image: "shoe-brown-marble.jpg", alt: "حذاء جلد بني بنعل بيج", w: 1080, h: 739, active: true },
