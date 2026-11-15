@@ -9,10 +9,11 @@ window.STORE = {
   currency: "جنيه",
   sizeFrom: 41,
   sizeTo: 45,
+  colors: {"beige":["بيج","#dccbab"],"brown":["بني","#4a2a1c"],"black":["أسود","#1a1a1a"],"gray":["رمادي","#8d8d8d"],"white":["أبيض","#ffffff"],"other":["أخرى","#b8a99a"],"cmwid4evp":["كحلي","#011d57"],"cmwid4rvj":["هافان","#ad3e00"]},
   /* للإخفاء بدون حذف: غيّر active إلى false */
   products: [
-    { code: "J-30", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "brown", price: 180000, image: "shoe-j-30-mwic8p56.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
-    { code: "J-29", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "other", price: 180000, image: "shoe-j-29-mwic825s.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-30", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "cmwid4rvj", price: 180000, image: "shoe-j-30-mwic8p56.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-29", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "cmwid4evp", price: 180000, image: "shoe-j-29-mwic825s.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
     { code: "J-28", name: "اسكتشر - ريموندا", type: "sport", color: "beige", price: 230000, image: "shoe-j-28-mwic6t7r.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
     { code: "J-27", name: "اسكتشر - ريموندا", type: "sport", color: "gray", price: 230000, image: "shoe-j-27-mwic61o2.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
     { code: "J-26", name: "اسكتشر -ريموندا", type: "sport", color: "black", price: 230000, image: "shoe-j-26-mwic50pr.jpg", alt: "اسكتشر -ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
