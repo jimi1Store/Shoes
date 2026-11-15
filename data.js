@@ -11,11 +11,11 @@ window.STORE = {
   sizeTo: 45,
   /* للإخفاء بدون حذف: غيّر active إلى false */
   products: [
-    { code: "J-30", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "brown", price: 180000, image: "shoe-j-30-mwic8p56.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, active: true },
-    { code: "J-29", name: "اسكتشر - ريموندا جلدي", type: "sport", color: "other", price: 180000, image: "shoe-j-29-mwic825s.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, active: true },
-    { code: "J-28", name: "اسكتشر - ريموندا", type: "sport", color: "beige", price: 230000, image: "shoe-j-28-mwic6t7r.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, active: true },
-    { code: "J-27", name: "اسكتشر - ريموندا", type: "sport", color: "gray", price: 230000, image: "shoe-j-27-mwic61o2.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, active: true },
-    { code: "J-26", name: "اسكتشر -ريموندا", type: "sport", color: "black", price: 230000, image: "shoe-j-26-mwic50pr.jpg", alt: "اسكتشر -ريموندا", w: 959, h: 1200, active: true },
+    { code: "J-30", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "brown", price: 180000, image: "shoe-j-30-mwic8p56.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-29", name: "اسكتشر - ريموندا جلدي", type: "leather", color: "other", price: 180000, image: "shoe-j-29-mwic825s.jpg", alt: "اسكتشر - ريموندا جلدي", w: 1080, h: 1080, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-28", name: "اسكتشر - ريموندا", type: "sport", color: "beige", price: 230000, image: "shoe-j-28-mwic6t7r.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-27", name: "اسكتشر - ريموندا", type: "sport", color: "gray", price: 230000, image: "shoe-j-27-mwic61o2.jpg", alt: "اسكتشر - ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
+    { code: "J-26", name: "اسكتشر -ريموندا", type: "sport", color: "black", price: 230000, image: "shoe-j-26-mwic50pr.jpg", alt: "اسكتشر -ريموندا", w: 959, h: 1200, sizes: [41,42,43,44,45,46], active: true },
     { code: "J-08", name: "حذاء جلد كاجوال – بني", type: "leather", color: "brown", price: 160000, image: "shoe-brown-loafer.jpg", alt: "حذاء كاجوال بني بجوانب مرنة", w: 864, h: 1080, active: true },
     { code: "J-09", name: "حذاء جلد كاجوال – أسود", type: "leather", color: "black", price: 160000, image: "shoe-black-loafer.jpg", alt: "حذاء كاجوال أسود بجوانب مرنة", w: 864, h: 1080, active: true },
     { code: "J-12", name: "جزمة كلاسيك – أسود", type: "leather", color: "black", price: 190000, image: "shoe-leather-derby-black.jpg", alt: "جزمة كلاسيك – أسود", w: 720, h: 960, active: true },
