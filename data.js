@@ -12,6 +12,16 @@ window.STORE = {
   colors: {"beige":["بيج","#dccbab"],"brown":["بني","#4a2a1c"],"black":["أسود","#1a1a1a"],"gray":["رمادي","#8d8d8d"],"white":["أبيض","#ffffff"],"other":["أخرى","#b8a99a"],"cmwid4evp":["كحلي","#011d57"],"cmwid4rvj":["هافان","#ad3e00"]},
   /* للإخفاء بدون حذف: غيّر active إلى false */
   products: [
+    { code: "J-46", name: "اسكتشر رجالي", type: "sport", color: "cmwid4evp", price: 350000, image: "shoe-j-46-mwjj48lt.jpg", alt: "اسكتشر رجالي", w: 900, h: 1200, active: true },
+    { code: "J-45", name: "اسكتشر رجالي", type: "leather", color: "black", price: 350000, image: "shoe-j-45-mwjj3hdx.jpg", alt: "اسكتشر رجالي", w: 900, h: 1200, active: true },
+    { code: "J-44", name: "اسكتشر رجالي", type: "sport", color: "gray", price: 350000, image: "shoe-j-44-mwjj3326.jpg", alt: "اسكتشر رجالي", w: 900, h: 1200, active: true },
+    { code: "J-43", name: "اسكتشر رجالي", type: "sport", color: "gray", price: 350000, image: "shoe-j-43-mwjj2pp7.jpg", alt: "اسكتشر رجالي", w: 900, h: 1200, active: true },
+    { code: "J-42", name: "اسكتشر رجالي", type: "sport", color: "black", price: 350000, image: "shoe-j-42-mwjj26eq.jpg", alt: "اسكتشر رجالي", w: 900, h: 1200, active: true },
+    { code: "J-41", name: "اسكتشر رجالي", type: "sport", color: "black", price: 350000, image: "shoe-j-41-mwjj1p17.jpg", alt: "اسكتشر رجالي", w: 810, h: 1080, active: true },
+    { code: "J-40", name: "اسكتشر رجالي جامبو", type: "sport", color: "cmwid4rvj", price: 350000, image: "shoe-j-40-mwjj0u7v.jpg", alt: "اسكتشر رجالي جامبو", w: 900, h: 1200, sizes: [44,45,46,47], active: true },
+    { code: "J-39", name: "اسكتشر رجالي جامبو", type: "sport", color: "cmwid4evp", price: 350000, image: "shoe-j-39-mwjj5khr.jpg", alt: "اسكتشر رجالي جامبو", w: 900, h: 1200, sizes: [44,45,46,47], active: true },
+    { code: "J-38", name: "اسكتشر رجالي جامبو", type: "leather", color: "gray", price: 350000, image: "shoe-j-38-mwjiztoo.jpg", alt: "اسكتشر رجالي جامبو", w: 900, h: 1200, sizes: [44,45,46,47], active: true },
+    { code: "J-37", name: "اسكتشر رجالي جامبو", type: "sport", color: "black", price: 350000, image: "shoe-j-37-mwjiz7k2.jpg", alt: "اسكتشر رجالي جامبو", w: 900, h: 1200, sizes: [44,45,46,47], active: true },
     { code: "J-36", name: "جزم كلاسيك", type: "leather", color: "cmwid4rvj", price: 170000, image: "shoe-j-36-mwjifsb4.jpg", alt: "جزم كلاسيك", w: 960, h: 1200, active: true },
     { code: "J-35", name: "جزم كلاسيك", type: "leather", color: "black", price: 170000, image: "shoe-j-35-mwjifeff.jpg", alt: "جزم كلاسيك", w: 960, h: 1200, active: true },
     { code: "J-34", name: "جزم كلاسيك", type: "leather", color: "brown", price: 170000, image: "shoe-j-34-mwjiexnx.jpg", alt: "جزم كلاسيك", w: 960, h: 1200, active: true },
